@@ -4,7 +4,7 @@
     $DB_DSN = 'localhost';
     $DB_USER = 'root';
     $DB_PASSWORD = '';
-    $DB_NAME = 'Matcha';
+    $DB_NAME = 'matcha2';
 
 
     //connect to the database
@@ -22,6 +22,7 @@
     try{
         $sql = "CREATE DATABASE IF NOT EXISTS ".$DB_NAME;
         $db->exec($sql);
+        echo "database successfully created";
     } catch(PDOException $e) {
         echo "Error: " . $e->getMessage();
     }

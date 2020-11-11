@@ -17,7 +17,7 @@ session_start();
         $DB_DSN = 'localhost';
         $DB_USER = 'root';
         $DB_PASSWORD = '';
-        $DB_NAME = 'Matcha';
+        $DB_NAME = 'matcha2';
         //connect to the newly created database
         try {
             $conn = new PDO("mysql:host=$DB_DSN;dbname=$DB_NAME", $DB_USER, $DB_PASSWORD);
@@ -39,28 +39,20 @@ session_start();
         //     # code...
         // }
 ?>
-        <label>Update your profile</label><br>
-            <select name="gender">
-            <option value="" >--Please choose your gender--</option>
-            <option value="female">Female</option>
-            <option value="male">Male</option>
-            </select><br>
-            <select name="sexpref">
-            <option  value="">--Please choose your sexual orientation--</option>
-            <option value="straight">Straight</option>
-            <option value="gay">Gay</option>
-            <option value="bisexual">Bisexual</option>
-            </select><br>
-            <input type="text" name="age" min="18" placeholder="Please enter your age"> <br>
-            <select name="area">
-            <option  value="">--Please choose your location--</option>
-            <option value="marshalltown">marshalltown</option>
-            <option value="sandton">sandton</option>
-            <option value="rosebank">rosebank</option>
-            <option value="soweto">soweto</option>
-            </select><br>
-            <input id="main" type="text" name="bio" placeholder="Short bio about you :)"value="" maxlength="500"> <br>
-            <button type="submit">Submit</button>
+        <h5>Update your profile</h5><br>
+        <form action="updateProfileFunctions.php" enctype="multipart/form-data" method="post">
+            <input type="text" name="username" maxlength="25" placeholder="Change your username"> <br>
+            <input type="password" name="pass" placeholder="Change your password"> <br>
+            <input  type="text" name="email" placeholder="Change your email"> <br>
+            <div class="input-field col s12">
+            <select>
+            <option value="" disabled selected>Choose your option</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            </select>
+            </div>
+            <br><br>
+            <button class="waves-effect black btn" type="submit">Submit</button>
         </form>
 </body>
 </html>

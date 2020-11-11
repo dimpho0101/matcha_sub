@@ -6,7 +6,7 @@ error_reporting(E_ALL);
       $DB_DSN = 'localhost';
       $DB_USER = 'root';
       $DB_PASSWORD = '';
-      $DB_NAME = 'Matcha';
+      $DB_NAME = 'matcha2';
       //connect to the newly created database
       try {
           $conn = new PDO("mysql:host=$DB_DSN;dbname=$DB_NAME", $DB_USER, $DB_PASSWORD);
@@ -150,35 +150,4 @@ error_reporting(E_ALL);
                 }
             }
 
-      //          //   $current_id = mysqli_query($conn, $sql) or die("<b>Error:</b> Problem on Image Insert<br/>" . mysqli_error($conn));
-              
-     
-                 
-      //           //   if (isset($current_id)) {
-      //           //    //   print_r ($current_id);
-      //           //       header("Location: fixthisshit.php");
-      //           //   }
-      //         }
-          
-      //     }  
-
-
-        //   if (isset($_POST['food']) && isset($_POST['sports']) && isset($_POST['books']) && isset($_POST['travel'])){
-        //     try{
-        //         $sql = $conn->prepare("INSERT INTO interesttags(food, sports, books, travel) VALUES(:food, :sports, :books, :travel)");
-        //         $sql->bindParam(':food', $_POST['food']);
-        //         $sql->bindParam(':sports', $_POST['sports']);
-        //         $sql->bindParam(':books', $_POST['books']);
-        //         $sql->bindParam(':travel', $_POST['travel']);
-        //         $sql->execute();
-        //     }catch(Exception $e)
-        //     {
-        //         echo 'Error: ' . $e->getMessage();
-        //     }
-
-        //   }
-?>
-
-<!-- select * from users join interestTags on users.id =  interestTags.userId Where interestTags.interest IN('travel', 'food') -->
-
-<!-- SELECT * FROM `likes` WHERE user1 IN(10, 9) AND user2 IN (9, 10) -->
+      

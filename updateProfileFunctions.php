@@ -1,13 +1,15 @@
 <?php
+
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
     
+
       session_start();
       $DB_DSN = 'localhost';
       $DB_USER = 'root';
       $DB_PASSWORD = '';
-      $DB_NAME = 'Matcha';
+      $DB_NAME = 'matcha2';
       //connect to the newly created database
       try {
           $conn = new PDO("mysql:host=$DB_DSN;dbname=$DB_NAME", $DB_USER, $DB_PASSWORD);
@@ -18,29 +20,32 @@ error_reporting(E_ALL);
       {
           echo "Connection failed: " . $e->getMessage();
       }
+
       //INSERT INTO userprofile(gender, sexpref, bio) VALUES("male", "asdasd", "bio")
     
                 // var_dump($_SESSION['id']);
-                if (isset($_POST['gender']) && !empty($_POST['gender']))
+                if (isset($_POST['username']) && !empty($_POST['username']))
                 {
                     try{
-                        $sql = $conn->prepare("UPDATE userprofile SET gender=:gender WHERE userId=:userid");
+                        $sql = $conn->prepare("UPDATE users SET username=:username WHERE id=:userid");
   
-                        $sql->bindParam(':gender', $_POST['gender']);
+                        $sql->bindParam(':username', $_POST['username']);
                         $sql->bindParam(':userid', $_SESSION['id']);
                         $sql->execute();
+                       
                     }catch(Exception $e)
                     {
                         echo 'Error: ' . $e->getMessage();
                     }
                 }
 
-                if (isset($_POST['sexpref']) && !empty($_POST['sexpref']))
+                if (isset($_POST['pass']) && !empty($_POST['pass']))
                 {
                     try{
-                        $sql = $conn->prepare("UPDATE userprofile SET sexpref=:sexpref WHERE userId=:userid");
+                        $pass = password_hash(trim($_POST['pass']), PASSWORD_BCRYPT, array('cost' => 5));
+                        $sql = $conn->prepare("UPDATE users SET `password`=:pass WHERE id=:userid");
   
-                        $sql->bindParam(':sexpref', $_POST['sexpref']);
+                        $sql->bindParam(':pass', $pass, PDO::PARAM_STR, 12);
                         $sql->bindParam(':userid', $_SESSION['id']);
                         $sql->execute();
                     }catch(Exception $e)
@@ -49,12 +54,12 @@ error_reporting(E_ALL);
                     }
                 }
                 
-                if (isset($_POST['bio']) && !empty($_POST['bio']))
+                if (isset($_POST['email']) && !empty($_POST['email']))
                 {
                     try{
-                        $sql = $conn->prepare("UPDATE userprofile SET bio=:bio WHERE userId=:userid");
+                        $sql = $conn->prepare("UPDATE users SET email=:email WHERE id=:userid");
   
-                        $sql->bindParam(':bio', $_POST['bio']);
+                        $sql->bindParam(':email', $_POST['email']);
                         $sql->bindParam(':userid', $_SESSION['id']);
                         $sql->execute();
                     }catch(Exception $e)
@@ -91,6 +96,7 @@ error_reporting(E_ALL);
                     }
                 }
                 //interests
+                echo "Profile has been updated";
               header("Location: home.php");  
 ?>
 

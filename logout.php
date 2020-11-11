@@ -5,7 +5,7 @@ session_start();
 $DB_DSN = 'localhost';
 $DB_USER = 'root';
 $DB_PASSWORD = '';
-$DB_NAME = 'Matcha';
+$DB_NAME = 'matcha2';
 //connect to the newly created database
 try {
     $conn = new PDO("mysql:host=$DB_DSN;dbname=$DB_NAME", $DB_USER, $DB_PASSWORD);
@@ -33,5 +33,5 @@ catch(PDOException $e)
 // var_dump($_SESSION);
 session_destroy();
 // var_dump($_SESSION);
-header("Location:login.php");
+header("Location:index.php");
 ?>

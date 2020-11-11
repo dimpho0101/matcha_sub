@@ -2,8 +2,8 @@
     session_start();
     $DB_DSN = 'localhost';
     $DB_USER = 'root';
-    $DB_PASSWORD = 'coding01';
-    $DB_NAME = 'Matcha';
+    $DB_PASSWORD = '';
+    $DB_NAME = 'matcha2';
     //connect to the newly created database
     try {
         $conn = new PDO("mysql:host=$DB_DSN;dbname=$DB_NAME", $DB_USER, $DB_PASSWORD);
@@ -217,7 +217,7 @@
             }
             if ($signup) {
                regmail($user[3], $token);
-                header('Location: ../login.php');
+                header('Location: ../home.php');
             }
             die();
         }
